@@ -1,9 +1,30 @@
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function VotzenWebsite() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
+
   return (
-    <div className="min-h-screen bg-neutral-100 text-black p-6 space-y-10">
-      <header className="text-center space-y-4">
+    <div className="min-h-screen bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white p-6 space-y-10">
+      <header className="text-center space-y-4 relative">
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="absolute top-0 right-0 m-4 w-32 h-32 md:w-40 md:h-40 opacity-80 hover:opacity-100 transition-transform hover:scale-105"
+          aria-label="Toggle dark mode"
+          style={{ zIndex: 10 }}
+        >
+          <Image
+            src="/broccoli.png"
+            alt="Dark Mode Brokkoli"
+            layout="fill"
+            objectFit="contain"
+          />
+        </button>
+
         <Image
           src="/logo-votzen.png"
           alt="VOTZEN Logo"
@@ -28,7 +49,7 @@ export default function VotzenWebsite() {
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl shadow p-6 space-y-4">
+        <div className="bg-white dark:bg-neutral-800 rounded-xl shadow p-6 space-y-4">
           <h2 className="text-2xl font-bold">Was wir bieten</h2>
           <ul className="list-disc list-inside space-y-2">
             <li>💚 1x/Monat Matcha-Spinat-Smoothie (vegan, grün, fragwürdig)</li>
@@ -40,7 +61,7 @@ export default function VotzenWebsite() {
           </ul>
         </div>
 
-        <div className="bg-white rounded-xl shadow p-6 space-y-4">
+        <div className="bg-white dark:bg-neutral-800 rounded-xl shadow p-6 space-y-4">
           <h2 className="text-2xl font-bold">Wen wir suchen</h2>
           <ul className="list-disc list-inside space-y-2">
             <li>Menschen, die nicht ins gemachte Nest wollen</li>
@@ -61,24 +82,24 @@ export default function VotzenWebsite() {
           <input
             type="text"
             placeholder="Dein Name"
-            className="w-full p-3 rounded border border-gray-300"
+            className="w-full p-3 rounded border border-gray-300 dark:border-neutral-600 dark:bg-neutral-800"
             required
           />
           <input
             type="email"
             placeholder="Deine E-Mail"
-            className="w-full p-3 rounded border border-gray-300"
+            className="w-full p-3 rounded border border-gray-300 dark:border-neutral-600 dark:bg-neutral-800"
             required
           />
           <textarea
             placeholder="Warum du VOTZEN willst..."
-            className="w-full p-3 rounded border border-gray-300"
+            className="w-full p-3 rounded border border-gray-300 dark:border-neutral-600 dark:bg-neutral-800"
             rows={4}
             required
           ></textarea>
           <button
             type="submit"
-            className="w-full text-lg py-3 bg-black text-white rounded hover:bg-gray-800"
+            className="w-full text-lg py-3 bg-black dark:bg-white text-white dark:text-black rounded hover:opacity-90"
           >
             Bewerbung abschicken
           </button>
@@ -86,7 +107,7 @@ export default function VotzenWebsite() {
         <p className="text-sm italic">Oder TikTok-Duett. Wir sind offen.</p>
       </section>
 
-      <footer className="text-center pt-10 text-gray-500">
+      <footer className="text-center pt-10 text-gray-500 dark:text-gray-400">
         <p>© 2025 VOTZEN GmbH – made with Liebe und ein bisschen Excel</p>
       </footer>
     </div>
