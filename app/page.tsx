@@ -20,8 +20,9 @@ export default function VotzenWebsite() {
           <Image
             src="/broccoli.png"
             alt="Dark Mode Brokkoli"
-            layout="fill"
-            objectFit="contain"
+            width={160}
+            height={160}
+            className="object-contain w-full h-full"
           />
         </button>
 
